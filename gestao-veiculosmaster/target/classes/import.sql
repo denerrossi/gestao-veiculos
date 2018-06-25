@@ -1,0 +1,5 @@
+--DELETE FROM Veiculo;
+--INSERT INTO Veiculo (id, placa, marca, modelo, ano) VALUES (1, 'HPG-0272',  'Renault', 'Clio', 2011); 
+--INSERT INTO Veiculo (id, placa, marca, modelo, ano) VALUES (2, 'OPP-1548',  'Ford', 'Fusion', 2016); 
+--INSERT INTO Veiculo (id, placa, marca, modelo, ano) VALUES (3, 'HTG-7896',  'Peugeot', '208', 2014); 
+--INSERT INTO Veiculo (id, placa, marca, modelo, ano) VALUES (4, 'MAH-0001',  'FIAT', 'Argo', 2017); 

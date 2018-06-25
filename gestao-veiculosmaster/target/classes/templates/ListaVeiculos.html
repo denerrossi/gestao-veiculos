@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Lista de Veículos</title>
+		<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+			rel="stylesheet" />
+		<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}"
+			rel="stylesheet" />
+	</head>
+	<body>
+		<h1>Bem Vindo à nossa Concessionária!</h1>
+		
+		<div class="panel panel-default" style="margin: 10px">
+			<div class="panel-heading">
+				<h1 class="panel-title">Lista de Veículos</h1>
+			</div>
+			<div class="panel-body">
+				<form class="form-inline" method="POST" th:object="${veiculo}"
+					th:action="@{/veiculos}" style="margin: 20px 0">
+					<div class="alert alert-success" th:if="${globalMessage}"
+							th:text="${globalMessage}">mensagem</div>
+					<div class="form-group">
+						<input type="hidden" class="form-control" placeholder="ID" th:field="*{id}" ></input>
+						<input type="text" class="form-control" placeholder="Placa" th:field="*{placa}" ></input>
+						<input type="text" class="form-control" placeholder="Marca" th:field="*{marca}"></input>
+						<input type="text" class="form-control"	placeholder="Modelo" th:field="*{modelo}"></input>
+						<input type="text" class="form-control" placeholder="Ano" th:field="*{ano}"></input>
+						<button type="submit" class="btn btn-primary">Salvar</button>
+					</div>
+				</form>
+				<table class="table">
+					<thead>
+						<tr>
+							<td>Placa</td>
+							<td>Marca</td>
+							<td>Modelo</td>
+							<td>Ano</td>
+							<td>Editar</td>
+							<td>Remover</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="veiculo : ${veiculos}">
+							<td th:text="${veiculo.placa}"></td>
+							<td th:text="${veiculo.marca}"></td>
+							<td th:text="${veiculo.modelo}"></td>
+							<td th:text="${veiculo.ano}"></td>
+							<td>
+								<a class="btn btn-link btn-xs" th:href="@{'/veiculos/'+${veiculo.id}}" 
+                                       title="Editar" rel="tooltip" data-placement="top">
+                                   <span class="glyphicon glyphicon-pencil"></span>
+                               </a>
+                            </td>
+                            <td>
+								<a class="btn btn-link btn-xs" th:href="@{'/veiculos/remover/'+${veiculo.id}}" 
+                                       onclick="return confirm('Confirma a remoção deste item?');"
+										title="Remover" rel="tooltip" data-placement="top">
+                                   <span class="glyphicon glyphicon-remove"></span>
+                               </a>
+                            </td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+		<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+	</body>
+</html>
